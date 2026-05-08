@@ -3,7 +3,7 @@ kind: Deployment
 
 metadata:
   name: oggy-web
-  namespace:oggy
+  namespace: oggy
   labels:
     app: oggy-web
 
@@ -19,20 +19,20 @@ spec:
     spec:
       containers:
       - name: oggy-container
-        image: oggy-web: v2
-        imagePullPolicy: Never
+        image: 9561494547/amazon:v2
+        imagePullPolicy: Always
         volumeMounts:
-         - name: db-connection
+        - name: db-connection
           mountPath: /connection
         - name: db-password
           mountPath: /password
-       ports:
-       - containerPort: 80
-     volumes:
-       - name: db-connection
-         configMap:
-           name:oggy-cm
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: db-connection
+        configMap:
+          name: oggy-cm
 
-       - name: db-password
-         secret:
-           secretName: database-secret
+      - name: db-password
+        secret:
+          secretName: database-secret
