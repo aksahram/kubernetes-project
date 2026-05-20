@@ -1,0 +1,10 @@
+replicaCount: 2
+
+image:
+  repository: 9561494547/amazon
+  tag: v3
+
+db:
+  port: "3309%#--=-=09"
+  password: "bXlwYXNzd29yZA=="
+
