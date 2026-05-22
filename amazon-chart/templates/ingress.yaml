@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: oggy-ingress
+  namespace: oggy
+
+spec:
+  ingressClassName: nginx
+
+  rules:
+  - host: local.amazon.com
+    http:
+      paths: 
+      - path: /  
+        pathType: Prefix
+
+        backend:
+          service:
+            name: oggy-web-service
+            port:
+              number: 80
+

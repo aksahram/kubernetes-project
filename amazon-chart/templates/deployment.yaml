@@ -8,7 +8,7 @@ metadata:
     app: oggy-web
 
 spec:
-  replicas: {{ .Values.replicaCount }}
+  # replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: oggy-web
@@ -21,6 +21,16 @@ spec:
       - name: oggy-container
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: Always
+
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+
         volumeMounts:
         - name: db-connection
           mountPath: /connection
