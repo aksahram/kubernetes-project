@@ -21,8 +21,8 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t 9561494547/amazon:v4 -f docker/Dockerfile .
+          docker build -t 9561494547/amazon:${{ github.runner_number }} -f docker/Dockerfile .
 
       - name: Push Docker Image
         run: |
-          docker push 9561494547/amazon:v4
+          docker push 9561494547/amazon:${{ github.runner_number }}
