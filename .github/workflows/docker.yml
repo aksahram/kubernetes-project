@@ -31,3 +31,18 @@ jobs:
       - name: Push Docker Image
         run: |
           docker push 9561494547/amazon:${IMAGE_TAG}
+
+      - name: Update Helm values.yaml
+        run: |
+          sed -i "s/tag:.*/tag: ${IMAGE_TAG}/" amazon-chart/values.yaml
+
+      - name: Commit Updated values.yaml
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          git add amazon-chart/values.yaml
+          git commit -m "Updated image tag to ${IMAGE_TAG}" || echo "No changes to commit"
+
+          git push
+          
