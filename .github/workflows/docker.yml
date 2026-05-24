@@ -20,11 +20,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          
+      - name: Set Image Tag
+        run: echo "IMAGE_TAG=v${{ github.run_number }}" >> $GITHUB_ENV
 
       - name: Build Docker Image
         run: |
-          docker build -t 9561494547/amazon:${{ github.runner_number }} -f docker/Dockerfile .
+          docker build -t 9561494547/amazon:${IMAGE_TAG} -f docker/Dockerfile .
 
       - name: Push Docker Image
         run: |
-          docker push 9561494547/amazon:${{ github.runner_number }}
+          docker push 9561494547/amazon:${IMAGE_TAG}
