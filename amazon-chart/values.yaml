@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: 9561494547/amazon
-  tag: v4
+  tag: v5
 
 db:
   port: "3309%#--=-=09"
