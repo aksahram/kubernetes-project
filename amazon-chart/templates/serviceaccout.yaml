@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: oggy-web-sa
+  labels:
+    app: oggy-web
+automountServiceAccountToken: false

@@ -17,6 +17,7 @@ spec:
       labels:
         app: oggy-web
     spec:
+      serviceAccountName: oggy-web-sa
       containers:
       - name: oggy-container
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
